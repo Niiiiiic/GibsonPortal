@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GibsonPortal.API.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace GibsonPortal.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ValuesController : ControllerBase
@@ -19,7 +21,7 @@ namespace GibsonPortal.API.Controllers
             _context = context;
 
         }
-
+        [AllowAnonymous]
         [HttpGet]
 
         public async Task<IActionResult> GetValues()
